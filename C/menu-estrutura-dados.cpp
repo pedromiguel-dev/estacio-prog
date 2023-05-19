@@ -1,5 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
+#include <string>
+
 int vet[10];
 int ini = 0, fim = 0, tam = 9;
 
@@ -10,6 +12,7 @@ int test_full() {
     return 1;
   }
 }
+
 int test_empty() {
   if (fim == 0) {
     return 0;
@@ -18,7 +21,7 @@ int test_empty() {
   }
 }
 
-int consultar() {
+void consultar() {
   if (test_empty() == 0) {
     std::cout << "vetor cazio" << std::endl;
   } else {
@@ -27,7 +30,7 @@ int consultar() {
   }
 }
 
-int incluir() {
+void incluir() {
   if (test_full() == 0) {
     std::cout << "vetor cheio" << std::endl;
   } else {
@@ -37,13 +40,42 @@ int incluir() {
     // consultar();
   }
 }
-int excluir() {
+
+void excluir() {
   if (test_empty() == 0) {
     std::cout << "vetor vazio" << std::endl;
   } else {
     fim = fim - 1;
     consultar();
   }
+}
+
+int wait_enter() {
+  std::cout << "Clique em qualquer tecla para continuar.\n";
+  int abc = std::getchar();
+  return 0;
+}
+
+void quick_sort(){
+  int numero = 0;
+  int index_found= -1;
+  std::cout << "digite o numero a ser buscado: ";
+  std::cin >> numero;
+
+  if(test_empty() == 0)
+    std::cout << "vetor vazio";
+    return;
+
+  for (int i = 0; i <= tam; i++)
+  {
+    if(vet[i] == numero)
+      index_found = i;
+  }
+
+  if(index_found >= 0)
+    std::cout << "numero achado no index " << index_found << ".";
+  else 
+    std::cout << "numero não foi encontrado :<";
 }
 
 int main(int argc, char *argv[]) {
@@ -59,6 +91,7 @@ int main(int argc, char *argv[]) {
     std::cout << "1 - Inclui pilha \n";
     std::cout << "2 - Exclui pilha \n";
     std::cout << "3 - Consulta pilha \n";
+    std::cout << "4 - Achar numero - linear_sort \n";
     std::cout << "\n";
     std::cout << "Opcao:";
     std::cin >> opcao;
@@ -75,13 +108,12 @@ int main(int argc, char *argv[]) {
     if (opcao == 3) {
       consultar();
     }
-    if (opcao > 3) {
-      std::cout << "Opçao Invalida";
+    if (opcao == 4) {
+      quick_sort();
     }
 
-    system("PAUSE");
-    system("cls");
+    wait_enter();
   }
-  system("PAUSE");
+  wait_enter();
   return 0;
 }
