@@ -6,7 +6,7 @@ void print_array(int array[], int size);
 int main(int argc, char const *argv[])
 {
     int array[] = {9, 4, 10, 20, 8};
-    int size = sizeof(array) / sizeof(array[0]);
+    int size = sizeof(array) / sizeof(array[0]); // get the size of the array
 
     sort(array, size);
 
